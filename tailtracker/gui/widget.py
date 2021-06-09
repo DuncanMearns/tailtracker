@@ -281,11 +281,11 @@ class TailInitializationWidget(QtWidgets.QWidget):
         params = self.params(self.points, self.n_points, dict(background=self.background, ksize=self.kernel_size))
         return params
 
-    @staticmethod
-    def app(image, return_object=True):
+    @classmethod
+    def app(cls, image, return_object=True):
         app = QtWidgets.QApplication(sys.argv)
         main = QtWidgets.QMainWindow()
-        w = TailInitializationWidget(image)
+        w = cls(image)
         w.accept.connect(main.close)
         w.reject.connect(main.close)
         main.setCentralWidget(w)
